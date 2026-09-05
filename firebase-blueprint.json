@@ -1,0 +1,305 @@
+{
+  "entities": {
+    "projects": {
+      "title": "Projects",
+      "description": "Production budget projects",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "totalBudget": { "type": "number" },
+        "spent": { "type": "number" },
+        "status": { "type": "string" },
+        "startDate": { "type": "string" },
+        "currency": { "type": "string" },
+        "companyName": { "type": "string" },
+        "projectType": { "type": "string" },
+        "directorName": { "type": "string" }
+      },
+      "required": ["id", "name", "totalBudget", "spent", "status"]
+    },
+    "categories": {
+      "title": "Budget Categories",
+      "description": "Categories for budget tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "name": { "type": "string" },
+        "allocatedAmount": { "type": "number" },
+        "spentAmount": { "type": "number" },
+        "code": { "type": "string" }
+      },
+      "required": ["id", "projectId", "name", "allocatedAmount", "spentAmount"]
+    },
+    "expenses": {
+      "title": "Expenses",
+      "description": "Expense items logged in ledger",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "title": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string" },
+        "payee": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "qty": { "type": "number" },
+        "unit": { "type": "string" },
+        "unitCost": { "type": "number" },
+        "code": { "type": "string" }
+      },
+      "required": ["id", "projectId", "categoryId", "title", "amount", "date", "payee", "status"]
+    },
+    "companies": {
+      "title": "Companies",
+      "description": "Registered company profiles in workspace",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "email": { "type": "string" },
+        "contactNumber": { "type": "string" },
+        "panNumber": { "type": "string" },
+        "gstNumber": { "type": "string" },
+        "code": { "type": "string" },
+        "description": { "type": "string" },
+        "projectCount": { "type": "number" },
+        "utilization": { "type": "number" },
+        "status": { "type": "string" },
+        "lastSynced": { "type": "string" }
+      },
+      "required": ["id", "name", "code", "status"]
+    },
+    "workspaceProjects": {
+      "title": "Workspace Projects",
+      "description": "Projects managed inside company workspace",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "name": { "type": "string" },
+        "ref": { "type": "string" },
+        "status": { "type": "string" },
+        "utilization": { "type": "number" },
+        "budget": { "type": "string" },
+        "resources": { "type": "array", "items": { "type": "string" } },
+        "lastSync": { "type": "string" },
+        "imgUrl": { "type": "string" }
+      },
+      "required": ["id", "companyId", "name", "ref", "status"]
+    },
+    "dbLogs": {
+      "title": "DB Logs",
+      "description": "Transaction and audit logs for ERP database",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "action": { "type": "string" },
+        "sqlQuery": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "action", "sqlQuery", "status"]
+    },
+    "users": {
+      "title": "User Profiles",
+      "description": "Registered user accounts and profile details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "workDesignation": { "type": "string" },
+        "dob": { "type": "string" },
+        "contactNumber": { "type": "string" },
+        "email": { "type": "string" },
+        "houseStreet": { "type": "string" },
+        "pinCode": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "country": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "fullName", "email"]
+    },
+    "vendors": {
+      "title": "Vendors",
+      "description": "Registered production vendors and bank details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "vendorName": { "type": "string" },
+        "category": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "gstin": { "type": "string" },
+        "bankName": { "type": "string" },
+        "accountNumber": { "type": "string" },
+        "ifscCode": { "type": "string" },
+        "status": { "type": "string" },
+        "totalPaid": { "type": "number" }
+      },
+      "required": ["id", "vendorName", "category"]
+    },
+    "payments": {
+      "title": "Payments",
+      "description": "Payment disbursement records and UTR tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "voucherNo": { "type": "string" },
+        "payee": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMode": { "type": "string" },
+        "bankName": { "type": "string" },
+        "utrNo": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string" },
+        "approvedBy": { "type": "string" }
+      },
+      "required": ["id", "voucherNo", "payee", "amount"]
+    },
+    "documents": {
+      "title": "Documents",
+      "description": "Project document archive and uploaded contracts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "docName": { "type": "string" },
+        "category": { "type": "string" },
+        "uploadedBy": { "type": "string" },
+        "fileSize": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "docName", "category"]
+    },
+    "productionDsrs": {
+      "title": "Production DSRs",
+      "description": "Daily shooting and status reports covering timings, crew, equipment, goods, transport, genset/vanity, meals, and notes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "companyId": { "type": "string" },
+        "scheduleName": { "type": "string" },
+        "unitName": { "type": "string" },
+        "dayNumber": { "type": "number" },
+        "dayCode": { "type": "string" },
+        "shootingDate": { "type": "string" },
+        "primaryLocationName": { "type": "string" },
+        "locations": { "type": "array" },
+        "callTime": { "type": "string" },
+        "packupTime": { "type": "string" },
+        "totalWorkingHours": { "type": "number" },
+        "overtimeHours": { "type": "number" },
+        "totalPlannedCrew": { "type": "number" },
+        "totalPresentCrew": { "type": "number" },
+        "totalAbsentCrew": { "type": "number" },
+        "totalExtraCrew": { "type": "number" },
+        "crewEntries": { "type": "array" },
+        "totalEquipmentQty": { "type": "number" },
+        "equipmentEntries": { "type": "array" },
+        "goodsEntries": { "type": "array" },
+        "totalVehicleQty": { "type": "number" },
+        "totalTransportCost": { "type": "number" },
+        "transportEntries": { "type": "array" },
+        "totalGensetQty": { "type": "number" },
+        "totalVanityQty": { "type": "number" },
+        "gensetEntries": { "type": "array" },
+        "vanityEntries": { "type": "array" },
+        "foodEntries": { "type": "array" },
+        "departmentCallTimes": { "type": "array" },
+        "productionNotes": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "projectId", "dayCode", "shootingDate", "status"]
+    },
+    "budgetVersions": {
+      "title": "Budget Versions",
+      "description": "Historical snapshots and approved budget version trees",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "versionNumber": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "totalBudget": { "type": "number" }
+      },
+      "required": ["id", "projectId", "versionNumber", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "Stores user profiles in individual user folder/documents"
+    },
+    "/companies/{companyId}": {
+      "schema": "companies",
+      "description": "Registered company profiles folder"
+    },
+    "/companies/{companyId}/projects/{projectId}": {
+      "schema": "workspaceProjects",
+      "description": "Company folder subcollection for workspace projects"
+    },
+    "/projects/{projectId}": {
+      "schema": "projects",
+      "description": "Project entity folder"
+    },
+    "/projects/{projectId}/categories/{categoryId}": {
+      "schema": "categories",
+      "description": "Project folder subcollection for categories"
+    },
+    "/projects/{projectId}/expenses/{expenseId}": {
+      "schema": "expenses",
+      "description": "Project folder subcollection for expenses"
+    },
+    "/projects/{projectId}/dbLogs/{logId}": {
+      "schema": "dbLogs",
+      "description": "Project folder subcollection for transaction logs"
+    },
+    "/categories/{categoryId}": {
+      "schema": "categories",
+      "description": "Categories for budget tracking"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "expenses",
+      "description": "Expense items logged in ledger"
+    },
+    "/vendors/{vendorId}": {
+      "schema": "vendors",
+      "description": "Registered vendor entries"
+    },
+    "/payments/{paymentId}": {
+      "schema": "payments",
+      "description": "Payment records"
+    },
+    "/documents/{documentId}": {
+      "schema": "documents",
+      "description": "Project documents"
+    },
+    "/workspaceProjects/{workspaceProjectId}": {
+      "schema": "workspaceProjects",
+      "description": "Projects managed inside workspace"
+    },
+    "/dbLogs/{logId}": {
+      "schema": "dbLogs",
+      "description": "Transaction and audit logs"
+    },
+    "/production_dsrs/{dsrId}": {
+      "schema": "productionDsrs",
+      "description": "Production Daily Status Reports database"
+    },
+    "/budgetVersions/{versionId}": {
+      "schema": "budgetVersions",
+      "description": "Saved project budget versions"
+    }
+  }
+}

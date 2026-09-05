@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Dark High-Density Compact Theme Colors */
+  --color-brand-bg: #0b0f19;
+  --color-brand-on-bg: #f1f5f9;
+  --color-brand-surface: #111827;
+  --color-brand-border: #1e293b;
+  --color-brand-primary: #3b82f6;
+  --color-brand-secondary: #2563eb;
+  --color-brand-secondary-hover: #1d4ed8;
+  --color-brand-text-muted: #94a3b8;
+}
+
+/* Bell & Approval Action Keyframe Animations */
+@keyframes bell-swing {
+  0% { transform: rotate(0); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-12deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-10deg); }
+  50% { transform: rotate(8deg); }
+  60% { transform: rotate(-6deg); }
+  70% { transform: rotate(4deg); }
+  80% { transform: rotate(-2deg); }
+  90% { transform: rotate(1deg); }
+  100% { transform: rotate(0); }
+}
+
+.animate-bell-swing {
+  transform-origin: top center;
+  animation: bell-swing 2s ease-in-out infinite;
+}
+
+@keyframes bell-ring-urgent {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  10% { transform: rotate(20deg) scale(1.1); }
+  20% { transform: rotate(-20deg) scale(1.1); }
+  30% { transform: rotate(16deg) scale(1.08); }
+  40% { transform: rotate(-16deg) scale(1.08); }
+  50% { transform: rotate(10deg) scale(1.05); }
+  60% { transform: rotate(-10deg) scale(1.05); }
+  70% { transform: rotate(5deg) scale(1.02); }
+  80% { transform: rotate(-5deg) scale(1.02); }
+  90% { transform: rotate(0deg) scale(1); }
+}
+
+.animate-bell-urgent {
+  transform-origin: top center;
+  animation: bell-ring-urgent 1.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+}
+
+@keyframes approval-glow-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.9), 0 0 14px rgba(245, 158, 11, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0), 0 0 24px rgba(245, 158, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0), 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+.animate-approval-pulse {
+  animation: approval-glow-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes beacon-ripple {
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-beacon-ripple {
+  animation: beacon-ripple 1.6s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+body {
+  background-color: #0b0f19;
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+}
+
+/* Ensure inputs, selects, and textareas default to crisp, visible light text in dark theme */
+input, select, textarea {
+  color: #f8fafc;
+}
+input::placeholder, textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Dark surface inputs and selects keep white/light text */
+input[class*="bg-slate-"], select[class*="bg-slate-"], textarea[class*="bg-slate-"],
+input[class*="bg-[#"], select[class*="bg-[#"], textarea[class*="bg-[#"],
+input[class*="bg-transparent"], select[class*="bg-transparent"], textarea[class*="bg-transparent"],
+input[class*="text-white"], select[class*="text-white"], textarea[class*="text-white"],
+input[class*="text-slate-"], select[class*="text-slate-"], textarea[class*="text-slate-"],
+input[class*="text-gray-"], select[class*="text-gray-"], textarea[class*="text-gray-"] {
+  color: #f8fafc;
+}
+
+/* Light surface inputs always have bold dark text */
+input[class*="bg-white"], select[class*="bg-white"], textarea[class*="bg-white"],
+input[class*="bg-slate-50"], select[class*="bg-slate-50"],
+input[class*="bg-slate-100"], select[class*="bg-slate-100"],
+input[class*="bg-slate-200"], select[class*="bg-slate-200"],
+input[class*="bg-gray-50"], select[class*="bg-gray-50"],
+input[class*="bg-gray-100"], select[class*="bg-gray-100"] {
+  color: #0f172a !important;
+}
+
+/* Fix option elements across dropdowns to match dark theme */
+select option {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+select[class*="bg-white"] option, select[class*="bg-slate-50"] option {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* Scrollbar customization for dense compact UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+

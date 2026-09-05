@@ -1,0 +1,6 @@
+{
+  "name": "PBT ERP",
+  "description": "A production-grade Clean Architecture and MVVM based ERP application for tracking film and media production budgets with a local-first ledger and interactive architectural flow engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
